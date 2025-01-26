@@ -35,6 +35,7 @@ export default function PhoneVerificationStep({
       try {
         const response = await api.get("https://api.ipify.org?format=json");
         setIp(response.ip);
+        console.log(response.ip)
       } catch (error) {
         console.error("Error fetching IP address:", error);
       }
