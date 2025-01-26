@@ -49,7 +49,7 @@ export default function PhoneVerificationStep({
       const response = await api.post("/send-otp", {
         phoneNumber,
         userAgent,
-        ipAdress: ip,
+        ipAddress: ip,
       });
       console.log(response);
       const { verId } = response;
