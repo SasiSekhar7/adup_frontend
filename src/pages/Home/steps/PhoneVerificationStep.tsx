@@ -76,6 +76,7 @@ export default function PhoneVerificationStep({
         verificationId,
         phoneNumber,
       });
+      updateFormData({phoneNumber})
       setLoading(false);
       setError("");
       onNext();
