@@ -1,11 +1,14 @@
 import RewardLandingPage from "./pages/Home"
-
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 function App() {
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-purple-400 to-indigo-600  flex items-center justify-center p-4">
-    <RewardLandingPage />
-  </main>
+    <Router>
+      <Routes>
+        <Route path="/" element={<RewardLandingPage />}/>
+      </Routes>
+    </Router>
+
   )
 }
 

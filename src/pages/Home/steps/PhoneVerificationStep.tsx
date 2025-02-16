@@ -12,6 +12,7 @@ import PhoneInput from "react-phone-number-input";
 import { Input } from "@/components/ui/input";
 import api from "@/api";
 import { ClipLoader } from "react-spinners";
+import { useSearchParams } from "react-router-dom";
 
 export default function PhoneVerificationStep({
   onNext,
@@ -28,6 +29,10 @@ export default function PhoneVerificationStep({
   const [error, setError] = useState("");
   const [verificationId, setVerificationId] = useState("");
   const [loading, setLoading] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const campaign_id = searchParams.get('campaign_id');
+
   useEffect(() => {
     // Collect the user agent from the browser
     setUserAgent(navigator.userAgent);
@@ -50,6 +55,7 @@ export default function PhoneVerificationStep({
         phoneNumber,
         userAgent,
         ipAddress: ip,
+        campaign_id
       });
       console.log(response);
       const { verId } = response;
