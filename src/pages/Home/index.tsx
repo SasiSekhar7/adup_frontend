@@ -4,12 +4,13 @@ import { useEffect, useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import WelcomeStep from "./steps/WelcomeStep"
 import PhoneVerificationStep from "./steps/PhoneVerificationStep"
-import AdditionalInfoStep1 from "./steps/AdditionalInfoStep"
-import AdditionalInfoStep2 from "./steps/AddStep2"
+// import AdditionalInfoStep1 from "./steps/AdditionalInfoStep"
+// import AdditionalInfoStep2 from "./steps/AddStep2"
 import RewardStep from "./steps/RewardStep"
-import { useSearchParams } from "react-router-dom"
+import { useLocation, useSearchParams } from "react-router-dom"
 import api from "@/api"
 import { Url } from "url"
+import ReactGA from "react-ga4";
 
 export interface CampaignData {
   coupon_code: string,
@@ -27,6 +28,12 @@ export default function RewardLandingPage() {
   // Get a specific query parameter
   const campaign_id = searchParams.get('campaign_id');
   const [phoneNumber, setPhoneNumber] = useState<string>();
+  const location = useLocation();
+  ReactGA.initialize("G-EB9T1FG4VY");
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: location.pathname });
+  }, [location]);
 
 
   const [step, setStep] = useState(0);
